@@ -1,0 +1,164 @@
+<html>
+<head>
+  <style>
+   * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: beige;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: black;
+  
+  padding: 10px;
+}
+
+.nav {
+  
+  background-color: rgba(0, 0, 0, 0.783);
+  display: flex;
+  list-style: none;
+}
+
+.nav li {
+  margin-left: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color:bisque;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.nav a:hover {
+  color: black;
+  background-color: beige;
+  border-radius: 50%;
+}
+
+.article {
+  margin-top: 40px;
+  border: 1px solid black;
+  background-color: white;
+  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.article-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.article-content {
+  padding: 20px;
+}
+
+.article-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.article-author {
+  display: flex;
+  align-items: center;
+}
+
+.author-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.author-name {
+  font-size: 16px;
+  color: black;
+}
+
+.article-date {
+  margin-left: 20px;
+  font-size: 16px;
+  color: gray;
+}
+
+.article-text {
+  font-size: 18px;
+  color: black;
+  line-height: 1.5;
+  
+  text-align: justify;
+}
+
+.article>h1{
+    color: rgba(255, 228, 196, 0);
+}
+
+.task-head{
+    font-weight: 1000;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo"></div>
+      <ul class="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="article">
+      
+      <div class="article-content">
+
+        <h1 class="article-title" align="center">WebMosiac Tasks:</h1> 
+            <h2 class="author-name" align="center"> Name: Arya Goghawala</h2><br>
+        </div>
+        </div>
+          
+          
+        <br>
+<p class="Task-head">Task1-Posts:</p><br>
+<iframe src="posts.html" width="100%" height="300">
+</iframe>
+
+<br><br><p class="Task-head">Task2-Post:</p><br>
+<iframe src="post.html" width="100%" height="300" style="border:1px solid black;">
+</iframe>
+
+<br><br><p class="Task-head">Task3-about:</p><br>
+<iframe src="about.html" width="100%" height="300" style="border:none;">
+</iframe>

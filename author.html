@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Information</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .author-info {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Author Information</h1>
+    <label for="authorId">Enter an Author ID (1-6):</label>
+    <input type="number" id="authorId" min="1" max="6">
+    <button onclick="fetchAuthor()">Fetch Author</button>
+    <div id="author-container"></div>
+
+    <script>
+        function fetchAuthor() {
+            const authorIdInput = document.getElementById('authorId');
+            const authorId = parseInt(authorIdInput.value);
+
+            
+            if (isNaN(authorId) || authorId < 1 || authorId > 6) {
+                alert('Please enter a valid Author ID between 1 and 6.');
+                return;
+            }
+
+           
+            fetch(`https://webmosaic.petrichor.events/author?id=${authorId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const authorContainer = document.getElementById('author-container');
+                    const author = data; // Assuming the API returns a single author object
+                    const authorElement = document.createElement('div');
+                    authorElement.classList.add('author-info');
+                    authorElement.innerHTML = `
+                        <h2>${author.name}</h2>
+                        <p>ID: ${author.id}</p>
+                        <!-- Add other relevant author information here -->
+                    `;
+                    authorContainer.innerHTML = ''; // Clear previous content
+                    authorContainer.appendChild(authorElement);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts API Integration</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .post {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        body{
+            color:bisque;
+            background-color:black 
+        }
+    </style>
+</head>
+<body>
+    <h1>Posts</h1>
+    <div id="posts-container"></div>
+
+    <script>
+        
+        fetch('https://webmosaic.petrichor.events/posts')
+            .then(response => response.json())
+            .then(data => {
+                const postsContainer = document.getElementById('posts-container');
+                data.posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.classList.add('post');
+                    postElement.innerHTML = `
+                        <h2>${post.name}</h2>
+                        <p>ID: ${post.id}</p>
+                    `;
+                    postsContainer.appendChild(postElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
+</body>
+</html>

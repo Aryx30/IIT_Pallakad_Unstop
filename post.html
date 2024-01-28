@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts API Integration</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .post {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        body{
+            color:bisque;
+            background-color:black 
+        }
+    </style>
+</head>
+<body>
+    <h1>Posts</h1>
+    <label for="postId">Enter an ID (1-6):</label>
+    <input type="number" id="postId" min="1" max="6">
+    <button onclick="fetchPost()">Fetch Post</button>
+    <div id="posts-container"></div>
+
+    <script>
+        function fetchPost() {
+            const postIdInput = document.getElementById('postId');
+            const postId = parseInt(postIdInput.value);
+
+            
+            if (isNaN(postId) || postId < 1 || postId > 6) {
+                alert('Please enter a valid ID between 1 and 6.');
+                return;
+            }
+
+            
+            fetch(`https://webmosaic.petrichor.events/post?id=${postId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const postsContainer = document.getElementById('posts-container');
+                    const post = data; 
+                    const postElement = document.createElement('div');
+                    postElement.classList.add('post');
+                    postElement.innerHTML = `
+                        <h2>${post.name}</h2>
+                        <p>ID: ${post.id}</p>
+                        <!-- Add other relevant post information here -->
+                    `;
+                    postsContainer.innerHTML = ''; 
+                    postsContainer.appendChild(postElement);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+    </script>
+</body>
+</html>

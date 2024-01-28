@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Mosaic - About</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        body{
+            color:rgb(201, 139, 64);
+            background-color:black 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Web Mosaic</h1>
+        <p id="about-text">Loading...</p>
+    </div>
+
+    <script>
+        
+        fetch('https://webmosaic.petrichor.events/about')
+            .then(response => response.json())
+            .then(data => {
+                const aboutText = document.getElementById('about-text');
+                aboutText.textContent = data.about;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
+</body>
+</html>
